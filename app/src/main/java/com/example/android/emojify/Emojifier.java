@@ -19,12 +19,12 @@ public class Emojifier {
 
         FaceDetector detector = new FaceDetector.Builder(context)
                 .setTrackingEnabled(false)
-                .setLandmarkType(FaceDetector.ALL_LANDMARKS)
+                .setClassificationType(FaceDetector.ALL_CLASSIFICATIONS)
                 .build();
 
         //Calling the detector synchronously
         SparseArray<Face> faces = detector.detect(frame);
 
-        Log.i("Faces -----------", String.valueOf(faces.size()));
+        Log.i("detectFaces", "Number of faces = " + String.valueOf(faces.size()));
     }
 }
