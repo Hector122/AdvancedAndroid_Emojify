@@ -41,6 +41,7 @@ class Emojifier {
         // Create the face detector, disable tracking and enable classifications
         FaceDetector detector = new FaceDetector.Builder(context)
                 .setTrackingEnabled(false)
+                .setLandmarkType(FaceDetector.ALL_CLASSIFICATIONS)
                 .setClassificationType(FaceDetector.ALL_CLASSIFICATIONS)
                 .build();
 
@@ -51,18 +52,32 @@ class Emojifier {
         SparseArray<Face> faces = detector.detect(frame);
 
         // Log the number of faces
-        Log.d(LOG_TAG, "detectFaces: number of faces = " + faces.size());
+        Log.d(LOG_TAG, "--------- detectFaces: number of faces = " + faces.size());
 
         // If there are no faces detected, show a Toast message
         if(faces.size() == 0){
-            Toast.makeText(context, R.string.no_faces_message, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.no_faces_message, Toast.LENGTH_LONG).show();
         }
 
         // TODO (2): Iterate through the faces, calling getClassifications() for each face.
+        for (int i = 0; i < faces.size(); i++ ) {
+            getClassifications(faces.get(i));
+        }
 
         // Release the detector
         detector.release();
     }
 
-    // TODO (1): Create a static method called getClassifications() which logs the probability of each eye being open and that the person is smiling.
+    //TODO  Create a static method called getClassifications() which logs the probability of each eye being open and that the person is smiling.
+
+    static void getClassifications(Face face){
+
+        Log.d(LOG_TAG, "----------- Probability left eye is open = " + face.getIsLeftEyeOpenProbability());
+        Log.d(LOG_TAG, "---------- Probability right eye is open = " + face.getIsRightEyeOpenProbability());
+        Log.d(LOG_TAG, "-------- Probability smiling = " + face.getIsSmilingProbability());
+        
+
+
+
+    }
 }
