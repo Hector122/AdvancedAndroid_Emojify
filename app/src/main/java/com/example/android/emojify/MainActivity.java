@@ -38,10 +38,12 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Timer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -74,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         // TODO (2): Set up Timber
+        Timber.plant(new Timber.DebugTree());
     }
 
     /**

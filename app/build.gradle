@@ -31,7 +31,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-vision:17.0.2'
     implementation 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
-    implementation
+    implementation  'com.jakewharton.timber:timber:4.5.0'
     // TODO (1): Add Timber dependency
 
     testImplementation 'junit:junit:4.12'
